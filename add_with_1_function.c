@@ -4,8 +4,8 @@ int main()
 {
   float a,b,sum;
   printf("enter the numbers to be added");
-  scanf("%f %f",&a,&b);
+  scanf("%f%f",&a,&b);
   sum=a+b;
-  printf("sum is %f",sum);
+  printf("sum is %f",a);
   return 0;
 }
