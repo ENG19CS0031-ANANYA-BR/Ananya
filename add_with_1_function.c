@@ -6,6 +6,6 @@ int main()
   printf("enter the numbers to be added");
   scanf("%f%f",&a,&b);
   sum=a+b;
-  printf("sum is %f",sum);
+  printf("sum of %f and %f is %f",a,b,sum);
   return 0;
 }
