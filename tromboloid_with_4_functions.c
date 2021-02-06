@@ -10,13 +10,13 @@ float input()
 float vol( float h,float b,float d)
 {
    float vol;
-   vol=1.0/3.0((h*b*d)+(b/d));
-   return 0;
+   vol=(0.333)*((h*b*d)+(b/d));
+   return vol;
 }
 int output(float vol)
 {
    printf("volume of the tromboloid is %f",vol);
-   return vol;
+   return 0;
 }
 int main()
 {
@@ -28,3 +28,4 @@ int main()
    output(v);
    return 0;
 }
+
