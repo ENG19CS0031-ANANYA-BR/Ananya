@@ -3,28 +3,29 @@
 #include<stdio.h>
 int input()
 {
-int n;
-printf("enter the number\n");
-scanf("%d",&n);
-return n;
+    int n;
+    printf("enter the number\n");
+    scanf("%d",&n);
+    return n;
 }
 int sum( int a,int b)
 {
-int sum=0;
-sum=a+b;
-return sum;
+    int sum=0;
+    sum=a+b;
+    return sum;
 }
-void output(int a,int b,int sum)
+int output(int a,int b,int sum)
 {
-printf("sum of %d and %d is %d",a,b,sum);
+    printf("sum of %d and %d is %d",a,b,sum);
+    return 0;
 }
 int main()
 {
-int d,e,f;
-d=input();
-e=input();
-f=sum(d,e);
-output(d,e,f);
-return 0;
+    int d,e,f;
+    d=input();
+    e=input();
+    f=sum(d,e);
+    output(d,e,f);
+    return 0;
 }
 
