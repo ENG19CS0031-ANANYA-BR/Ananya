@@ -27,8 +27,7 @@ int main()
     b2=input();
     c1=input();
     c2=input();
-    d2=three_d(a1,a2,b1,b2,c1,c2);
-    output(d1);
-    output(d2);
+    d=three_d(a1,a2,b1,b2,c1,c2);
+    output(d);
     return 0;
 }
