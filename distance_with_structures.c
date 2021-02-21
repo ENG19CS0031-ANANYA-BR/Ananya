@@ -15,14 +15,25 @@ float Distance(struct Point a, struct Point b)
 int main()
 {
     struct Point a, b;
-    printf("Enter coordinate of point a: ");
-    scanf("%f %f", &a.x, &a.y);
-    printf("Enter coordinate of point b: ");
-    scanf("%f %f", &b.x, &b.y);
-    printf("Distance between a and b: %f\n",Distance(a, b));
+    float z;
+    a=input();
+    b=input();
+    z=dist(a,b);
+    output(z);
     return 0;
 }
-
+input(struct point a)
+{
+ printf("enter x coordinates");
+ scanf("%f"&a.x);
+ printf("enter y coordinates");
+ scanf("%f",&a.y);
+ return a;
+}
+void output(float dist)
+{
+printf("distance=%f",dist);
+}
 
 
 
