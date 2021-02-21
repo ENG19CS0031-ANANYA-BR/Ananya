@@ -12,20 +12,12 @@ float Distance(struct Point a, struct Point b)
     distance = sqrt((a.x - b.x) * (a.x - b.x) + (a.y-b.y) *(a.y-b.y));
     return distance;
 }
-int main()
+
+struct Point input()
 {
-    struct Point a, b;
-    float z;
-    a=input();
-    b=input();
-    z=dist(a,b);
-    output(z);
-    return 0;
-}
-input(struct point a)
-{
+ struct Point a;
  printf("enter x coordinates");
- scanf("%f"&a.x);
+ scanf("%f",&a.x);
  printf("enter y coordinates");
  scanf("%f",&a.y);
  return a;
@@ -34,6 +26,17 @@ void output(float dist)
 {
 printf("distance=%f",dist);
 }
+float main()
+{
+    struct Point a,b;
+    float z;
+    a=input();
+    b=input();
+    z=Distance(a,b);
+    output(z);
+    return 0;
+}
+
 
 
 
