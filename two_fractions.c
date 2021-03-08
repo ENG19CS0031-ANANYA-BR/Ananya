@@ -21,13 +21,15 @@ int hcf(int a,int b)
 {
     int gcd=1;
     int i=1;
-do
-{
-    if(a%i==0&&b%i==0)
-    gcd=i;
-    i++;
-} while (i<=a&&i<=b);
-    return gcd;
+    if(i<=a&&i<=b)
+    {
+        if(a%i==0&&b%i==0)
+        {
+            gcd=i;
+            i++;
+            return gcd;
+        }
+    }
 }
 
 struct frac input()
