@@ -1,17 +1,44 @@
-//Write a program to find the sum of n different numbers using 4 functions
 #include<stdio.h>
+int value()
+{
+    int n;
+    printf("enter the number\n");
+    scanf("%d",&n);
+    return n;
+}
+void input(int a[],int *n)
+{
+   
+    printf("enter the number of numbers");
+    scanf("%d",n);
+    for(int i=0;i<*n;i++)
+      {
+       a[i]=value();
+      }
+}
+int clac(int a[],int n)
+{
+ int sum=0;
+ for(int i=0;i<n;i++)
+ {
+     sum=sum+a[i];
+ }
+return sum;
+}
+void output(int sum,int a[],int n)
+{
+    printf("sum of ");
+    for(int i=0;i<n-1;i++)
+    {
+        printf("%d+",a[i]);
+    }
+    printf("%d is %d",a[n-1],sum);
+}
 int main()
 {
-   int n,count;
-   float num,sum=0;
-   printf("enter the total number of numbers\n");
-   scanf("%d",&n);
-   printf("enter the numbers");
-   for(count=1;count<=n;count++)
-      {
-         scanf("%f",&num);
-         sum=sum+num;
-      }
-   printf("sum of %d numbers is %f",n,sum);
-   return 0;
+  int a[200], n;
+  input(a,&n);
+  int res=clac(a,n);
+  output(res,a,n);
+  return 0;
 }
