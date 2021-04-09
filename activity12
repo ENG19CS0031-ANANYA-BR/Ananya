@@ -1,0 +1,95 @@
+#include<stdio.h>
+struct fraction
+{
+    int num,deno;
+};
+typedef struct fraction frac;
+ struct egyptian
+{
+    int a;
+    int deno[200];
+    frac sum;
+};
+typedef struct egyptian egy;
+void input(egy *one)
+{
+    printf("enter the number of denominators:\n");
+    scanf("%d",&one->a);
+    for(int i=0;i<one->a;i++)
+    {
+       printf("enter denominator:\n");
+       scanf("%d",&one->deno[i]);
+
+    }
+}
+void input_n(int n,egy arr[n])
+{
+     for(int i=0;i<n;i++)
+{
+input(&arr[i]);
+}
+}
+
+int hcf(int a,int b)
+{
+    int gcd=1;
+    for(int i=2;i<=a&&i<=b;i++)
+    {
+        if(a%i==0&&b%i==0)
+        {
+            gcd=i;
+        }
+    }return gcd;
+}
+
+void compute(egy *one)
+{
+    frac f;
+    f.num=0;
+    f.deno=1;
+    for(int i=0;i<one->a;i++)
+     {
+          one->sum.num=(f.num*one->deno[i])+f.deno;
+          one->sum.deno=f.deno*one->deno[i];
+          int gcd=hcf(one->sum.num,one->sum.deno);
+          one->sum.num=one->sum.num/gcd;
+          one->sum.deno=one->sum.deno/gcd;
+          f=one->sum;
+      }
+}
+
+void compute_n(int n,egy arr[n])
+{
+     for(int i=0;i<n;i++)
+     {
+          compute(&arr[i]);
+     }
+}
+
+void output(egy *one)
+{
+    for(int i=0;i<(one->a)-1;i++)
+    {
+         printf("1/%d+",one->deno[i]);
+    }
+    printf("1/%d = %d/%d\n",one->deno[(one->a)-1],one->sum.num,one->sum.deno);
+}
+void output_n(int n,egy arr[n])
+{
+    for(int i=0;i<n;i++)
+    {
+      output(&arr[i]);  
+}
+}
+
+int main()
+{
+     int n;
+     printf("no of trials:\n");
+     scanf("%d",&n);
+     egy arr[n];
+     input_n(n,arr);
+     compute_n(n,arr);
+     output_n(n,arr);
+     return 0;
+}
