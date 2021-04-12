@@ -1,0 +1,64 @@
+#include<stdio.h>
+#include<math.h>
+struct vertices
+{
+    float x;
+    float y;
+};
+typedef struct vertices vertice;
+struct rectangle
+{
+    vertice arr[3];
+    float area;
+};
+typedef struct rectangle rec;
+void input(rec *z)
+{
+    for(int i=0; i<3; i++)
+    {
+          printf("enter the x coordinate\n");
+          scanf("%f",&z->arr[i].x);
+          printf("enter the y coordinate\n");
+          scanf("%f",&z->arr[i].y);
+
+    }
+}
+void input_n(rec arr[],int n)
+{
+    for(int i=0; i<n; i++)
+        input(&arr[i]);
+}
+void compute_1(rec *z)
+{
+    float l1=sqrt(pow((z->arr[1].y-z->arr[0].y),2)+pow((z->arr[1].x-z->arr[0].x),2));
+    float l2=sqrt(pow((z->arr[0].y-z->arr[2].y),2)+pow((z->arr[0].x-z->arr[2].x),2));
+    z->area=l1*l2;
+}
+void compute_n(rec arr[],int n)
+{
+    for(int i=0; i<n; i++)
+        compute_1(&arr[i]);
+}
+void output_1(rec *z)
+{
+    printf("Area of rectangle with vertices ");
+    for(int i=0; i<3; i++)
+        printf("(%.1f,%.1f) ",z->arr[i].x,z->arr[i].y);
+    printf("is %.1f\n",z->area);
+}
+void output_n(rec arr[],int n)
+{
+    for(int i=0; i<n; i++)
+        output_1(&arr[i]);
+}
+int main()
+{
+    int n;
+    rec a[100];
+    printf("enter the number of trials:\n");
+    scanf("%d",&n);
+    input_n(a,n);
+    compute_n(a,n);
+    output_n(a,n);
+    return 0;
+}
