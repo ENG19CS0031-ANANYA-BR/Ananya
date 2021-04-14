@@ -1,0 +1,112 @@
+#include<stdio.h>
+#include<string.h>
+struct time_card
+{
+     char empname[60];
+     float minute;
+};
+typedef struct time_card tc;
+
+struct employee
+{
+     char name[20];
+     float hw;
+     float hours;
+     float gross;
+};
+typedef struct employee emp;
+
+int inp()
+{
+     int n;
+    printf("enter the number of employees:\n");
+    scanf("%d",&n);
+    return n;
+}
+
+void input(emp *one)
+{
+     printf("enter the name of the employee:\n");
+     scanf("%s",one->name);
+     printf("enter the hourly wage of the employee:\n");
+     scanf("%f",&one->hw);
+}
+
+void input_n(int n, emp arr[])
+{
+for(int i=0;i<n;i++)
+   {
+       input(&arr[i]);
+   }
+}
+
+void input_t(int m,tc time_card[])
+{
+    for(int i=0;i<m;i++)
+    {
+     printf("enter the name of the employee:\n");
+     scanf("%s",time_card[i].empname);
+     printf("enter the minutes worked by the employee:\n");
+     scanf("%f",&time_card[i].minute);
+     }
+}
+
+float calc_hour(emp *one,int m,tc time_card[])
+{
+     float tmins=1,thours=0;
+     for(int i=0;i<m;i++)
+     {
+         if(strcmp(one->name,time_card[i].empname)==0)
+         {
+              tmins=tmins+time_card[i].minute;
+         }thours=tmins/60;
+     }return thours;
+}
+
+void compute(emp *one,int m,tc time_card[])
+{
+     one->hours=calc_hour(one,m,time_card);
+    if(one->hours<40)
+    {
+         one->gross=one->hours*one->hw;
+    }     
+    else
+    {
+          one->gross=(40*one->hw+(one->hours-40)*(1.5*one->hw));
+     }
+}
+
+void compute_n(int n,emp arr[],int m, tc time_card[])
+{
+      for(int i=0;i<n;i++)
+      {
+      compute(&arr[i],m,time_card);
+      } 
+}
+
+void output(emp *one)
+{
+     printf("%s: %f hours , $ %f \n",one->name,one->hours,one->gross);
+} 
+
+void output_n(int n, emp arr[])
+{
+    for(int i=0;i<n;i++)
+    {
+          output(&arr[i]);
+     }
+}
+
+int main()
+{
+     int n,m;
+     n=inp();
+     emp arr[n];
+     input_n(n,arr);
+     m=inp();
+     tc time_card[m];
+     input_t(m,time_card);
+     compute_n(n,arr,m,time_card);
+     output_n(n,arr);
+     return 0;
+}
